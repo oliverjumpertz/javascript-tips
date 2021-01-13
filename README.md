@@ -16,6 +16,7 @@ This repository is going to give you some short and concise tips to improve your
 - [Broadcasting messages to other browser windows and tabs](#broadcasting-messages-to-other-browser-windows-and-tabs)
 - [Optional Chaining](#optional-chaining)
 - [Infinitely flatten arguments](#infinitely-flatten-arguments)
+- [Object destructuring](#object-destructuring)
 
 ## Tips
 ### Creating a really empty object
@@ -239,4 +240,23 @@ function flatten(...arguments) {
 
 const result = flatten([1, 2, 3, 4, 5], [[1], [2, 3]], 2, 1, "a", "z");
 // => [1, 2, 3, 4, 5, 1, 2, 3, 2, 1, "a", "z"]
+```
+
+### Object destructuring
+Object destructuring is a way to access nested properties of objects.
+
+It puts the emphasis on the left side of the assignment instead of the right.
+
+```JavaScript
+const obj = {
+  propertyOne: 2,
+  propertyTwo: "hello there"
+};
+
+const defaultValue = 1;
+
+// Extracts propertyOne from obj, renames it to nowKnownAsNumber, and assigns defaultValue if the property is null or undefined.
+const { propertyOne: nowKnownAsNumber = defaultValue } = obj;
+
+console.log(nowKnownAsNumber); // => 2
 ```
