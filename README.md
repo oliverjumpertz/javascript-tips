@@ -13,6 +13,7 @@ This repository is going to give you some short and concise tips to improve your
 - [Get the last elements from an array](#get-the-last-elements-from-an-array)
 - [Using some and every on arrays instead of filter](#using-some-and-every-on-arrays-instead-of-filter)
 - [Using the clipboard API to access the clipboard of your users](#using-the-clipboard-api-to-access-the-clipboard-of-your-users)
+- [Broadcasting messages to other browser windows and tabs](#broadcasting-messages-to-other-browser-windows-and-tabs)
 
 ## Tips
 ### Creating a really empty object
@@ -183,4 +184,26 @@ button.onclick = function(event) {
     console.error(error);
   }
 }
+```
+
+### Broadcasting messages to other browser windows and tabs
+You can use a BroadcastChannel to send messages between browsing contexts (tabs, windows, etc.) that share the same origin.
+
+You can use this to sync your frontend state across multiple browser tabs a user has open, no matter where they make changes.
+
+```JavaScript
+const bc = new BroadcastChannel("state");
+
+// This is the receiver. The function is fired each time a message is received.
+bc.onmessage = function(message) {
+  console.log(event);
+};
+
+// Send a message. Could be anything, not only strings. Objects work, as well.
+bc.postMessage("Hey there!");
+
+setTimeout(() => {
+  // close the channel
+  bc.close();
+}, 5000);
 ```
