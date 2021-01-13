@@ -9,6 +9,7 @@ This repository is going to give you some short and concise tips to improve your
 - [Swap variables with the array destructuring assignment](#swap-variables-with-the-array-destructuring-assignment)
 - [Iterating over indices and values of an array with a for..of loop](#iterating-over-indices-and-values-of-an-array-with-a-forof-loop)
 - [Switching over ranges](#switching-over-ranges)
+- [Extract unique values from an array](#extract-unique-values-from-an-array)
 
 ## Tips
 ### Creating a really empty object
@@ -102,4 +103,18 @@ function getCheering(followers) {
 
 const cheer = getCheering(2125);
 console.log(cheer); // => "Wow, I'm speechless. I'm so happy, thank you!!!"
+```
+
+## Extract unique values from an array
+You can get all unique values from an array by using a Set and the spread operator.
+
+No need to filter the array, or use some other, less readable methods.
+
+But be adviced, this only works for primitives.
+
+```JavaScript
+const array = [1, 1, 1, 2, 3, 2, 4, 5, 1, 6, 7, 3, 8, 7, 6, 9];
+
+const uniqueValues = [...new Set(array)];
+// => uniqueValues is now: [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
