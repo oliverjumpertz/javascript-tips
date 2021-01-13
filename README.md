@@ -15,6 +15,7 @@ This repository is going to give you some short and concise tips to improve your
 - [Using the clipboard API to access the clipboard of your users](#using-the-clipboard-api-to-access-the-clipboard-of-your-users)
 - [Broadcasting messages to other browser windows and tabs](#broadcasting-messages-to-other-browser-windows-and-tabs)
 - [Optional Chaining](#optional-chaining)
+- [Infinitely flatten arguments](#infinitely-flatten-arguments)
 
 ## Tips
 ### Creating a really empty object
@@ -226,4 +227,16 @@ const obj = {
 const throwsResult = obj.nestedObject.fun(); // => TypeError - obj.nestedObject.fun is not a function
 
 const result = obj?.nestedObject?.fun?.(); // => undefined, fun is not found but the optional chaining prevents an error
+```
+
+### Infinitely flatten arguments
+You can use an easy-to-implement utility function with a rest parameter to concat as many arguments as you like into a single, flattened array.
+
+```JavaScript
+function flatten(...arguments) {
+  return arguments.flat(Infinity);
+}
+
+const result = flatten([1, 2, 3, 4, 5], [[1], [2, 3]], 2, 1, "a", "z");
+// => [1, 2, 3, 4, 5, 1, 2, 3, 2, 1, "a", "z"]
 ```
