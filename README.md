@@ -11,6 +11,7 @@ This repository is going to give you some short and concise tips to improve your
 - [Switching over ranges](#switching-over-ranges)
 - [Extract unique values from an array](#extract-unique-values-from-an-array)
 - [Get the last elements from an array](#get-the-last-elements-from-an-array)
+- [Using some and every on arrays instead of filter](#using-some-and-every-on-arrays-instead-of-filter)
 
 ## Tips
 ### Creating a really empty object
@@ -36,7 +37,7 @@ emptyDict.hasOwnProperty; // => undefined
 emptyDict.myFunction; // => undefined
 ```
 
-## Swap variables with the array destructuring assignment
+### Swap variables with the array destructuring assignment
 You can use an array destructuring assignment to swap two variables.
 
 ```JavaScript
@@ -52,7 +53,7 @@ b = tmp;
 [a, b] = [b, a];
 ```
 
-## Iterating over indices and values of an array with a for..of loop
+### Iterating over indices and values of an array with a for..of loop
 You can also get access to the index, next to the element, when you iterate over an array with a for..of-loop.
 
 There is no need to handle the index manually. Array.prototype.entries can do that for you.
@@ -77,7 +78,7 @@ for (const [index, element] of array.entries()) {
 }
 ```
 
-## Switching over ranges
+### Switching over ranges
 You can also use the switch statement in JavaScript to cover a range instead of only one value. Simply switch over true.
 
 It's a great way to use a switch instead of if-statements where it's simply more readable.
@@ -106,7 +107,7 @@ const cheer = getCheering(2125);
 console.log(cheer); // => "Wow, I'm speechless. I'm so happy, thank you!!!"
 ```
 
-## Extract unique values from an array
+### Extract unique values from an array
 You can get all unique values from an array by using a Set and the spread operator.
 
 No need to filter the array, or use some other, less readable methods.
@@ -120,7 +121,7 @@ const uniqueValues = [...new Set(array)];
 // => uniqueValues is now: [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
-# Get the last elements from an array
+### Get the last elements from an array
 You can get the last elements of an array by using Array.prototype.slice with negative numbers.
 
 ```JavaScript
@@ -129,4 +130,25 @@ const array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 array.slice(-1); // => [9]
 array.slice(-2); // => [8, 9]
 array.slice(-3); // => [7, 8, 9]
+```
+
+### Using some and every on arrays instead of filter
+You can use Array.prototype.some and Array.prototype.every to test whether some or all values of an array satisfy a certain condition.
+
+This is way more readable and concise than using Array.prototype.filter.
+
+```JavaScript
+const array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+// ❌ Using filter to test if all values pass a test
+array.filter((num) => num > 0).length === array.length; // => true
+
+// ✅ Using every
+array.every((num) = num > 0); // => true
+
+// ❌ Using filter to test if some values pass a test
+array.filter((num) => num > 5).length > 0; // => true
+
+// ✅ Using every
+array.some((num) = num > 5); // => true
 ```
