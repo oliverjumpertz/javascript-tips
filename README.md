@@ -70,3 +70,32 @@ for (const [index, element] of array.entries()) {
   console.log(index, element);
 }
 ```
+
+## Switching over ranges
+You can also use the switch statement in JavaScript to cover a range instead of only one value. Simply switch over true.
+
+It's a great way to use a switch instead of if-statements where it's simply more readable.
+
+```JavaScript
+function getCheering(followers) {
+  // If you were to switch over followers, you'd be surprised,
+  // because you'd always hit the default case.
+  // By switching over true, all cases get evaluated properly, although they
+  // contain numeric ranges!
+  switch (true) {
+    case followers >= 2000:
+      return "Wow, I'm speechless. I'm so happy, thank you!!!";
+    case followers >= 1000:
+      return "Wow, this is so great!";
+    case followers >= 500:
+      return "Awesome!";
+    case followers >= 100:
+      return "Wooooo!";
+    default:
+      return "Yay!";
+  }
+}
+
+const cheer = getCheering(2125);
+console.log(cheer); // => "Wow, I'm speechless. I'm so happy, thank you!!!"
+```
