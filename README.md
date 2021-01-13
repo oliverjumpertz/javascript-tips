@@ -14,6 +14,7 @@ This repository is going to give you some short and concise tips to improve your
 - [Using some and every on arrays instead of filter](#using-some-and-every-on-arrays-instead-of-filter)
 - [Using the clipboard API to access the clipboard of your users](#using-the-clipboard-api-to-access-the-clipboard-of-your-users)
 - [Broadcasting messages to other browser windows and tabs](#broadcasting-messages-to-other-browser-windows-and-tabs)
+- [Optional Chaining](#optional-chaining)
 
 ## Tips
 ### Creating a really empty object
@@ -206,4 +207,23 @@ setTimeout(() => {
   // close the channel
   bc.close();
 }, 5000);
+```
+
+### Optional Chaining
+Optional chaining is a great way to access deeply nested properties and functions in a safe way.
+
+Instead of TypeErrors being thrown, your results become undefined. No need for try-catch blocks for a relatively trivial property access.
+
+```JavaScript
+const obj = {
+  property: 1,
+  nestedObject: {
+    property: 2,
+    func: () => "foo"
+  }
+}
+
+const throwsResult = obj.nestedObject.fun(); // => TypeError - obj.nestedObject.fun is not a function
+
+const result = obj?.nestedObject?.fun?.(); // => undefined, fun is not found but the optional chaining prevents an error
 ```
