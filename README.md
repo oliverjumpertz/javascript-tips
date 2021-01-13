@@ -12,6 +12,7 @@ This repository is going to give you some short and concise tips to improve your
 - [Extract unique values from an array](#extract-unique-values-from-an-array)
 - [Get the last elements from an array](#get-the-last-elements-from-an-array)
 - [Using some and every on arrays instead of filter](#using-some-and-every-on-arrays-instead-of-filter)
+- [Using the clipboard API to access the clipboard of your users](#using-the-clipboard-api-to-access-the-clipboard-of-your-users)
 
 ## Tips
 ### Creating a really empty object
@@ -151,4 +152,35 @@ array.filter((num) => num > 5).length > 0; // => true
 
 // ✅ Using every
 array.some((num) = num > 5); // => true
+```
+
+### Using the clipboard API to access the clipboard of your users
+You can use the clipboard API to interact with a user's clipboard.
+
+writeText writes text,
+write writes arbitrary data (like images),
+read reads arbitrary data,
+and readText reads text.
+
+**Attention: read\* needs user permission!**
+
+```HTML
+<div>
+  <input type="text" id="select"/>
+  <button id="btn">Select & Copy</button>
+</div>
+```
+
+```JavaScript
+const button = document.getElementById('btn');
+
+button.onclick = function(event) {
+  const input = document.getElementById('select');
+  try {
+    // this writes the current value within the input into the user's clipboard
+    await navigator.clipboard.writeText(input.value);
+  } catch (error) {
+    console.error(error);
+  }
+}
 ```
