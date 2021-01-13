@@ -10,6 +10,7 @@ This repository is going to give you some short and concise tips to improve your
 - [Iterating over indices and values of an array with a for..of loop](#iterating-over-indices-and-values-of-an-array-with-a-forof-loop)
 - [Switching over ranges](#switching-over-ranges)
 - [Extract unique values from an array](#extract-unique-values-from-an-array)
+- [Get the last elements from an array](#get-the-last-elements-from-an-array)
 
 ## Tips
 ### Creating a really empty object
@@ -117,4 +118,15 @@ const array = [1, 1, 1, 2, 3, 2, 4, 5, 1, 6, 7, 3, 8, 7, 6, 9];
 
 const uniqueValues = [...new Set(array)];
 // => uniqueValues is now: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+# Get the last elements from an array
+You can get the last elements of an array by using Array.prototype.slice with negative numbers.
+
+```JavaScript
+const array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+array.slice(-1); // => [9]
+array.slice(-2); // => [8, 9]
+array.slice(-3); // => [7, 8, 9]
 ```
