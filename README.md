@@ -45,3 +45,28 @@ b = tmp;
 // with destructuring
 [a, b] = [b, a];
 ```
+
+## Iterating over indices and values of an array with a for..of loop
+You can also get access to the index, next to the element, when you iterate over an array with a for..of-loop.
+
+There is no need to handle the index manually. Array.prototype.entries can do that for you.
+
+```JavaScript
+// Iterating over the array with each individual element at hand while separately
+// keeping track of the index.
+let i = 0;
+for (const element of array) {
+  console.log(i++, element);
+}
+
+
+// Array.prototype.entries() returns an iterator which itself returns an array instead
+// of each individual element every time next() is called.
+// By using array destructuring, you take the tuple (array) the iterator returns on
+// each iteration step and destructure it into individual variables.
+// You can then iterate over the array while having the index and the element at hand on
+// each iteration.
+for (const [index, element] of array.entries()) {
+  console.log(index, element);
+}
+```
