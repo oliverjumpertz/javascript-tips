@@ -5,6 +5,10 @@ JavaScript is an awesome language, but from time to time you can get lost in the
 This repository is going to give you some short and concise tips to improve your code or make things easier or better to read.
 
 ## Table of Contents
+- [Creating a really empty object](#creating-a-really-empty-object)
+- [Swap variables with the array destructuring assignment](#swap-variables-with-the-array-destructuring-assignment)
+- [Iterating over indices and values of an array with a for..of loop](#iterating-over-indices-and-values-of-an-array-with-a-forof-loop)
+- [Switching over ranges](#switching-over-ranges)
 
 ## Tips
 ### Creating a really empty object
